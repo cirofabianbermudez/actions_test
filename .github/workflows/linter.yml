@@ -5,23 +5,32 @@ on:
     branches:
       - main
 jobs:
-  linter:
+  build:
+    
     name: Linter
     runs-on: ubuntu-latest
+
     steps:
-      - name: Server and repository information
+
+      - name: Show information
         run: |
-          echo "The job was automatically triggered by a ${{ github.event_name }} event.";
-          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!";
-          echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}.";
+          echo "Triggered by a ${{ github.event_name }} event.";
+          echo "Running on a ${{ runner.os }} server on Github.";
+          echo "Branch is ${{ github.ref }}";
+          echo "Repository is ${{ github.repository }}."
+
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Repository cloned successfully
-        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: Ready to run commands
-        run: echo "Ready to run commands"
-      - name: Super-linter
-        uses: super-linter/super-linter@v6.3.0  # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "The ${{ github.repository }} repository has been cloned."
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install python dependencies
+        run: pip install clang-format
+
+      - run: ls -lha
+      - run: python --version
+      - run: clang-format --version
