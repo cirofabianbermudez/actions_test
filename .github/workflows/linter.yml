@@ -16,12 +16,11 @@ jobs:
         run: |
           echo "Triggered by a ${{ github.event_name }} event.";
           echo "Running on a ${{ runner.os }} server on Github.";
-          echo "Branch is ${{ github.ref }}";
+          echo "Branch is ${{ github.ref }}.";
           echo "Repository is ${{ github.repository }}."
 
       - name: Check out repository code
         uses: actions/checkout@v4
-        run: echo "The ${{ github.repository }} repository has been cloned."
 
       - name: Set up Python
         uses: actions/setup-python@v4
