@@ -34,4 +34,4 @@ jobs:
       - run: python --version
       - run: clang-format --version
 
-      - run: cat codes/hello.cpp
+      - run: clang-format codes/hello.cpp --style=Google -i
