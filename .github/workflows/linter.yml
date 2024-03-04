@@ -35,4 +35,4 @@ jobs:
       - run: clang-format --version
 
       - run: cd codes
-      - run: clang-format hello.cpp --style=Google -i
+      - run: ls -lha
