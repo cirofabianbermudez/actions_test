@@ -7,10 +7,10 @@
 
 // using namespace std;
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv){
   std::string name;
 
-  std::cin >> name;
+    std::cin >> name;
   std::cout << "Hello " << name << std::endl;
   return 0;
 }
